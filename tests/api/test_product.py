@@ -25,8 +25,8 @@ def test_correct_product_creation(new_random_product_dto):
 @pytest.mark.api
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.title("API update product test")
-def test_correct_product_update(new_random_product_dto):
-    request = new_random_product_dto.set_id(21)
+def test_correct_product_update(create_random_product):
+    request = create_random_product
     actual_response = RequestsBuilder(PRODUCTS).execute_put_request(request.get_id(), request.to_dict())
     assert_that(actual_response.status_code).is_equal_to(HTTPStatus.OK)
     assert_that(actual_response.json()).is_equal_to(request.to_dict())
