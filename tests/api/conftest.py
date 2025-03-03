@@ -32,12 +32,14 @@ def new_random_product_dto() -> Product:
     image = "http://example.com"
     return Product(None, title, price, description, category, image)
 
+
 @pytest.fixture()
-def create_random_product(new_random_product_dto)-> Product:
+def create_random_product(new_random_product_dto) -> Product:
     product = new_random_product_dto
     actual_response = RequestsBuilder(PRODUCTS).execute_post_request(product.to_dict())
     product.set_id(actual_response.json()['id'])
     return product
+
 
 @pytest.fixture()
 def default_created_product():
