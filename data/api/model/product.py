@@ -31,21 +31,27 @@ class Product:
 
     def set_id(self, id: int):
         self.__id = id
+        return self
 
     def set_title(self, title: str):
         self.__title = title
+        return self
 
     def set_price(self, price: float):
         self.__price = price
+        return self
 
     def set_category(self, category: str):
         self.__category = category
+        return self
 
     def set_description(self, description: str):
         self.__description = description
+        return self
 
     def set_image(self, image: str):
         self.__image = image
+        return self
 
     def to_dict(self):
         return {

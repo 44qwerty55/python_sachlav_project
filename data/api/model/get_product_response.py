@@ -13,6 +13,7 @@ class ProductsResponse(Product):
 
     def set_rating(self, rating: Rating):
         self.__rating = rating
+        return self
 
     def to_dict(self):
         return {

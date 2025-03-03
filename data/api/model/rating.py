@@ -12,9 +12,11 @@ class Rating:
 
     def set_count(self, count: float):
         self.__count = count
+        return self
 
     def set_rate(self, rate: float):
         self.__rate = rate
+        return self
 
     def to_dict(self):
         return {
