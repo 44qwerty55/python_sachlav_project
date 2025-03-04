@@ -29,16 +29,16 @@ class RequestsBuilder:
         return self._execute_request('post', self.url, json)
 
     @allure.step("Send PUT request")
-    def execute_put_request(self, product_id: str, json=None):
-        product_url = f"{self.url}/{product_id}"
-        return self._execute_request('put', product_url, json)
+    def execute_put_request(self, id: str, json=None):
+        full_url = f"{self.url}/{id}"
+        return self._execute_request('put', full_url, json)
 
     @allure.step("Send GET request by ID")
-    def execute_get_request_by_id(self, product_id: str):
-        product_url = f"{self.url}/{product_id}"
-        return self._execute_request('get', product_url)
+    def execute_get_request_by_id(self, id: str):
+        full_url = f"{self.url}/{id}"
+        return self._execute_request('get', full_url)
 
     @allure.step("Send DELETE request by ID")
-    def execute_delete_request_by_id(self, product_id: str):
-        product_url = f"{self.url}/{product_id}"
-        return self._execute_request('delete', product_url)
+    def execute_delete_request_by_id(self, id: str):
+        full_url = f"{self.url}/{id}"
+        return self._execute_request('delete', full_url)

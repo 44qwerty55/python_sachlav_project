@@ -1,8 +1,7 @@
 from data.api.model.product import Product
-from data.api.model.rating import Rating
-import json
+from data.api.model.dto.rating import Rating
 
-class ProductsResponse(Product):
+class ProductResponse(Product):
 
     def __init__(self, id: int, title: str, price: float, description: str, category: str, image: str, rating: Rating):
         super().__init__(id, title, price, description, category, image)
@@ -39,8 +38,3 @@ class ProductsResponse(Product):
             image=data.get('image'),
             rating=rating
         )
-
-    @classmethod
-    def from_json(cls, json_data):
-        data = json.loads(json_data)
-        return cls.from_dict(data)

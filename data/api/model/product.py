@@ -73,8 +73,3 @@ class Product:
             category=data.get('category'),
             image=data.get('image')
         )
-
-    @classmethod
-    def from_json(cls, json_data):
-        data = json.loads(json_data)
-        return cls.from_dict(data)
