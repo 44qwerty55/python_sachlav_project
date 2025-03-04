@@ -13,8 +13,8 @@ from data.api.requests.requests_builder import RequestsBuilder
 @pytest.mark.api
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.title("API create new product test")
-def test_correct_product_creation(new_random_product_dto):
-    request = new_random_product_dto
+def test_correct_product_creation(new_random_product):
+    request = new_random_product
     actual_response = RequestsBuilder(PRODUCTS).execute_post_request(request.to_dict())
     assert_that(actual_response.status_code).is_equal_to(HTTPStatus.OK)
 

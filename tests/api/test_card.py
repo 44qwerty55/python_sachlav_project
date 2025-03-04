@@ -12,8 +12,8 @@ from data.api.requests.requests_builder import RequestsBuilder
 @pytest.mark.api
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.title("API create new card test")
-def test_correct_card_creation(new_random_card_dto):
-    request = new_random_card_dto
+def test_correct_card_creation(new_random_card):
+    request = new_random_card
     actual_response = RequestsBuilder(CARDS).execute_post_request(request.to_dict())
     assert_that(actual_response.status_code).is_equal_to(HTTPStatus.OK)
 
