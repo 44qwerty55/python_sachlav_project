@@ -18,8 +18,10 @@ class MainPage:
 
         self.__create_new_category = page.get_by_test_id("add-category-button")
         self.__new_category_textfield  = page.get_by_test_id("new-category-label")
-        self.__category_list = page.get_by_test_id("category-list-div")
-
+        self.__category_textfield = page.get_by_test_id("category-edit")
+        self.__category_list = page.locator('.category-list')
+        self.__delete_category_button = page.get_by_test_id("category-option-delete-permanently")
+        self.__rename_category_button = page.get_by_test_id("category-options-rename")
 
     def click_create_new_node_button(self):
         self.__create_new_node_button.click()
@@ -69,18 +71,35 @@ class MainPage:
         locator = self.__all_node_name_from_title
         count = locator.count()
         note_names = [locator.nth(i).text_content().strip() for i in range(count)]
-
         return note_names
 
     def push_new_category_button(self):
         self.__create_new_category.click()
 
+    def push_delete_category_button(self):
+        self.__category_list.click(button="right")
+        self.__delete_category_button.click()
+
+    def push_rename_category_button(self):
+        self.__category_list.click(button="right")
+        self.__rename_category_button.click()
+
     def type_new_category(self, name: str):
         self.__new_category_textfield.fill(name)
         self.page.keyboard.press("Enter")
 
-    def validate_new_category(self, text: str):
-        expect(self.__category_list).to_contain_text(text)
+    def type_rename_category(self, name: str):
+        self.__category_textfield.press("ControlOrMeta+a")
+        self.__category_textfield.fill("")
+        self.__category_textfield.fill(name)
+        self.page.keyboard.press("Enter")
+
+    def validate_name_category(self, name_category: str):
+        expect(self.__category_list).to_contain_text(name_category)
+
+    def validate_not_category_in_title(self, name_category: str):
+        expect(self.__category_list).not_to_have_text(name_category)
+
 
 
 
