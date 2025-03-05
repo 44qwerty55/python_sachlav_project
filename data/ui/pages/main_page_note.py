@@ -21,6 +21,7 @@ class MainPageNote(MainPage):
         self.__click_trash_option_in_menu = page.get_by_test_id("note-option-trash")
         self.__move_to_category_option_in_menu = page.get_by_test_id("note-options-move-to-category-select")
         self.__all_note_name_from_title = page.locator('div[data-testid^="note-title-"] div.truncate-text')
+        self.__click_sync_button = page.get_by_test_id("topbar-action-sync-notes")
 
         self.__click_scratchpad_button = page.get_by_role("button", name="Scratchpad", exact=True)
         self.__default_text_in_scratchpad = page.locator("pre").filter(has_text=DEFAULT_TEXT_IN_SCRATCHPAD)
@@ -67,6 +68,9 @@ class MainPageNote(MainPage):
 
     def click_trash_option_in_menu(self):
         self.__click_trash_option_in_menu.click()
+
+    def click_sync_button(self):
+        self.__click_sync_button.click()
 
     def select_category_move_to_category_option_in_menu(self, name: str):
         self.__move_to_category_option_in_menu.select_option(name)

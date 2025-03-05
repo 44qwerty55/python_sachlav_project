@@ -20,8 +20,13 @@ class MainPageCategory(MainPage):
     def push_new_category_button(self):
         self.__create_new_category.click()
 
-    def category_list(self):
+    def clic_to_category_list(self):
         self.__category_list.click()
+
+    def create_new_category(self, category_name: str):
+        self.push_new_category_button()
+        self.type_new_category(category_name)
+        self.validate_name_category(category_name)
 
     def push_delete_category_button(self, category: str):
         self.click_menu_category_by_name(category)

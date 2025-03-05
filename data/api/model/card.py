@@ -3,7 +3,7 @@ from typing import List
 from data.api.model.dto.product_from_card import ProductForCard
 
 
-class Card():
+class Card:
 
     def __init__(self, id: int, user_id: int, products: List[ProductForCard]):
         self.__id = id

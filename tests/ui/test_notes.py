@@ -1,3 +1,5 @@
+import json
+
 from data.ui.helpers import helper
 
 count_push_enter = 3
@@ -8,6 +10,11 @@ def test_validate_new_note_in_preview_mode(note_page, new_note_name, new_note_va
     note_page.click_preview_mode_button()
     note_page.validate_node_in_preview(
         helper.create_formatted_string(new_note_name, new_note_value, count_push_enter))
+    note_page.click_preview_mode_button()
+    note_page.click_sync_button()
+    local_storage_data = note_page.page.evaluate("JSON.stringify(localStorage);")
+
+    print("Local Storage Content:", json.loads(local_storage_data))
 
 
 def test_add_new_note_to_favorite(note_page, new_note_name, new_note_value):
