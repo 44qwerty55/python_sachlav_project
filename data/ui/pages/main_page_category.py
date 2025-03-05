@@ -1,3 +1,4 @@
+import allure
 from assertpy import assert_that
 from playwright.sync_api import Page
 
@@ -18,27 +19,32 @@ class MainPageCategory(MainPage):
         self.__category_menu = page.locator('div[data-testid="move-category"]')
 
     def push_new_category_button(self):
-        self.__create_new_category.click()
+        with allure.step("Clic new category button"):
+            self.__create_new_category.click()
 
     def clic_to_category_list(self):
         self.__category_list.click()
 
     def create_new_category(self, category_name: str):
-        self.push_new_category_button()
-        self.type_new_category(category_name)
-        self.validate_name_category(category_name)
+        with allure.step("Create new category"):
+            self.push_new_category_button()
+            self.type_new_category(category_name)
+            self.validate_name_category(category_name)
 
     def push_delete_category_button(self, category: str):
-        self.click_menu_category_by_name(category)
-        self.__delete_category_button.click()
+        with allure.step("Delete category"):
+            self.click_menu_category_by_name(category)
+            self.__delete_category_button.click()
 
     def push_rename_category_button(self, category: str):
-        self.click_menu_category_by_name(category)
-        self.__rename_category_button.click()
+        with allure.step("Rename category"):
+            self.click_menu_category_by_name(category)
+            self.__rename_category_button.click()
 
     def type_new_category(self, name: str):
-        self.__new_category_textfield.fill(name)
-        self.page.keyboard.press("Enter")
+        with allure.step("Typing new category name"):
+            self.__new_category_textfield.fill(name)
+            self.page.keyboard.press("Enter")
 
     def type_rename_category(self, name: str):
         self.__category_textfield.press("ControlOrMeta+a")

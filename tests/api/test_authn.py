@@ -12,7 +12,7 @@ from data.api.requests.requests_builder import RequestsBuilder
 @pytest.mark.positive
 @pytest.mark.api
 @allure.severity(allure.severity_level.CRITICAL)
-@allure.title("API authn")
+@allure.title("API authn test")
 def test_correct_authn(default_created_user):
     request = Login.instance(default_created_user)
     actual_response = RequestsBuilder(AUTHN).execute_post_request(request.to_dict())

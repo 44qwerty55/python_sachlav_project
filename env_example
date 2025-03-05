@@ -1,1 +1,5 @@
 BASE_URL_VALUE=<your_environment_url>
+BASE_URL_API=<fakestoreapi_environment_url>
+BASE_URL_UI=<takenote_environment_url>
+DEFAULT_PASSWORD=<default_user_api_password>
+DEFAULT_USER=<default_user_api_name>
