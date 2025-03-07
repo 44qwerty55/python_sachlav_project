@@ -1,11 +1,12 @@
-from typing import List
+from dataclasses import dataclass, field
+from typing import List, Optional
 
-from data.api.model.dto.product_from_card import ProductForCard
+from data.api.model.dto.product_from_cart import ProductForCart
 
 
-class Card:
+class Cart:
 
-    def __init__(self, id: int, user_id: int, products: List[ProductForCard]):
+    def __init__(self, id: int, user_id: int, products: List[ProductForCart]):
         self.__id = id
         self.__user_id = user_id
         self.__products = products
@@ -24,17 +25,17 @@ class Card:
         self.__user_id = user_id
         return self
 
-    def get_products(self) -> List[ProductForCard]:
+    def get_products(self) -> List[ProductForCart]:
         return self.__products
 
-    def set_products(self, products: List[ProductForCard]):
+    def set_products(self, products: List[ProductForCart]):
         self.__products = products
         return self
 
-    def add_product(self, product: ProductForCard):
+    def add_product(self, product: ProductForCart):
         self.__products.append(product)
 
-    def remove_product(self, product: ProductForCard):
+    def remove_product(self, product: ProductForCart):
         if product in self.__products:
             self.__products.remove(product)
 
@@ -50,5 +51,5 @@ class Card:
         return cls(
             id=data.get('id'),
             user_id=data.get('userId'),
-            products=[ProductForCard.from_dict(p) for p in data.get('products', [])]
+            products=[ProductForCart.from_dict(p) for p in data.get('products', [])]
         )

@@ -5,7 +5,7 @@ from assertpy import assert_that
 from data.api.requests.requests_builder import RequestsBuilder
 
 
-class BaseApiTest:
+class BaseApiClass:
     ENDPOINT = None
 
     def get_request_by_id(self, default_response):

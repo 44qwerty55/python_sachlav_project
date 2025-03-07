@@ -1,6 +1,7 @@
 import allure
 import requests
 
+from data.api.constants.http_metods import HttpMethod
 from data.api.helpers.logger import Logger
 
 
@@ -22,21 +23,21 @@ class RequestsBuilder:
 
     @allure.step("Send GET request")
     def execute_get_request(self):
-        return self._execute_request('get', self.url)
+        return self._execute_request(HttpMethod.GET.value, self.url)
 
     @allure.step("Send POST request")
     def execute_post_request(self, json=None):
-        return self._execute_request('post', self.url, json)
+        return self._execute_request(HttpMethod.POST.value, self.url, json)
 
     @allure.step("Send PUT request")
     def execute_put_request(self, id: str, json=None):
         full_url = f"{self.url}/{id}"
-        return self._execute_request('put', full_url, json)
+        return self._execute_request(HttpMethod.PUT.value, full_url, json)
 
     @allure.step("Send GET request by ID")
     def execute_get_request_by_id(self, id: str):
         full_url = f"{self.url}/{id}"
-        return self._execute_request('get', full_url)
+        return self._execute_request(HttpMethod.GET.value, full_url)
 
     @allure.step("Send DELETE request by ID")
     def execute_delete_request_by_id(self, id: str):

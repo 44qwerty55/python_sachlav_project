@@ -1,12 +1,12 @@
 from typing import List
 
-from data.api.model.card import Card
-from data.api.model.dto.product_from_card import ProductForCard
+from data.api.model.cart import Cart
+from data.api.model.dto.product_from_cart import ProductForCart
 
 
-class CardResponse(Card):
+class CartResponse(Cart):
 
-    def __init__(self, id: int, user_id: int, date: str, products: List[ProductForCard], version: int):
+    def __init__(self, id: int, user_id: int, date: str, products: List[ProductForCart], version: int):
         super().__init__(id, user_id, products)
         self.__date = date
         self.__version = version
@@ -37,7 +37,7 @@ class CardResponse(Card):
     @classmethod
     def from_dict(cls, data):
         products_data = data.get("products", [])
-        products = [ProductForCard.from_dict(p) for p in products_data]
+        products = [ProductForCart.from_dict(p) for p in products_data]
         return cls(
             id=data.get('id'),
             user_id=data.get('userId'),

@@ -1,4 +1,4 @@
-class ProductForCard:
+class ProductForCart:
 
     def __init__(self, product_id: int, quantity: int):
         self.__product_id = product_id
